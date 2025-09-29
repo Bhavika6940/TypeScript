@@ -1,51 +1,55 @@
-interface Address{
-    street : string;
-    city: string ;
-    state : string;
+import * as UserLogin from './Interface'
+interface Address {
+    street: string;
+    city: string;
+    state: string;
     pin: string;
 };
-class Employee{
+class Employee implements UserLogin.Login {
     protected id: number;
-    name : string;
-    address : Address;
-    constructor(id : number, name: string , address : Address){
+    name: string;
+    address: Address;
+    constructor(id: number, name: string, address: Address) {
         this.id = id;
         this.address = address;
         this.name = name;
     }
-    static getEmployeeCount() : number{
+    static getEmployeeCount(): number {
         return 50;
     }
-    getNameWithAddress() : string{
+    getNameWithAddress(): string {
         // return this.name + " " +this.address;
 
         return `${this.name} stays at ${this.address}`
     }
-    get empId() : number{
+    get empId(): number {
         return this.id;
     }
-    set empId(id : number){
-       this.id = id;
+    set empId(id: number) {
+        this.id = id;
     }
 
-}                                                          
- class Manager extends Employee {
-    constructor(id : number,name: string , address: Address){
-        super(id,name, address);
+    Login(): UserLogin.User {
+        return { name: 'John', id: 1, email: 'abc@123' }
     }
-     getNameWithAddress() : string{
-        
+}
+class Manager extends Employee {
+    constructor(id: number, name: string, address: Address) {
+        super(id, name, address);
+    }
+    getNameWithAddress(): string {
+
 
         return `${this.name} is a manager at ${this.address}`
     }
- }
- 
+}
 
-let john = new Employee(1,'John',{
-    street : "ABC",
-    city : "Banglore",
-    state : "Karnataka",
-    pin:"456778"
+
+let john = new Employee(1, 'John', {
+    street: "ABC",
+    city: "Banglore",
+    state: "Karnataka",
+    pin: "456778"
 });
 console.log(john.getNameWithAddress());
 console.log(Employee.getEmployeeCount());
@@ -55,8 +59,13 @@ console.log(Employee.getEmployeeCount());
 
 console.log(john);
 
-let mike = new Manager(2,'Mike','Malviya Nagar')
-console.log(mike. getNameWithAddress())
+let mike = new Manager(2, 'Mike', {
+    street: "ABC",
+    city: "Banglore",
+    state: "Karnataka",
+    pin: "456778"
+})
+console.log(mike.getNameWithAddress())
 john.empId = 100;
 console.log(john);
 console.log(john.empId);

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+;
 class Employee {
     constructor(id, name, address) {
         this.id = id;
@@ -19,6 +20,9 @@ class Employee {
     set empId(id) {
         this.id = id;
     }
+    Login() {
+        return { name: 'John', id: 1, email: 'abc@123' };
+    }
 }
 class Manager extends Employee {
     constructor(id, name, address) {
@@ -28,14 +32,24 @@ class Manager extends Employee {
         return `${this.name} is a manager at ${this.address}`;
     }
 }
-let john = new Employee(1, 'John', 'Highway71');
+let john = new Employee(1, 'John', {
+    street: "ABC",
+    city: "Banglore",
+    state: "Karnataka",
+    pin: "456778"
+});
 console.log(john.getNameWithAddress());
 console.log(Employee.getEmployeeCount());
 // john.id = 1;
 // john.name = 'John';
 // john.address = 'Highway71'
 console.log(john);
-let mike = new Manager(2, 'Mike', 'Malviya Nagar');
+let mike = new Manager(2, 'Mike', {
+    street: "ABC",
+    city: "Banglore",
+    state: "Karnataka",
+    pin: "456778"
+});
 console.log(mike.getNameWithAddress());
 john.empId = 100;
 console.log(john);
