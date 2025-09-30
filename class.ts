@@ -55,7 +55,12 @@ console.log(Employee.getEmployeeCount());
 
 console.log(john);
 
-let mike = new Manager(2,'Mike','Malviya Nagar')
+let mike = new Manager(2,'Mike',{
+    street : "ABC",
+    city : "Banglore",
+    state : "Karnataka",
+    pin:"456778"
+})
 console.log(mike. getNameWithAddress())
 john.empId = 100;
 console.log(john);
